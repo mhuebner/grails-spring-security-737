@@ -59,6 +59,11 @@ dependencies {
     implementation "org.hibernate:hibernate-core:5.6.5.Final"
     implementation "org.grails.plugins:events"
     implementation "org.grails.plugins:gsp"
+
+    implementation "org.grails.plugins:spring-security-core:5.0.0", {
+        exclude group: "net.sf.ehcache", module: "ehcache"
+    }
+
     profile "org.grails.profiles:web"
     runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
     runtimeOnly "com.h2database:h2"
@@ -80,8 +85,8 @@ dependencies {
 bootRun {
     ignoreExitValue true
     jvmArgs(
-        '-Dspring.output.ansi.enabled=always', 
-        '-noverify', 
+        '-Dspring.output.ansi.enabled=always',
+        '-noverify',
         '-XX:TieredStopAtLevel=1',
         '-Xmx1024m')
     sourceResources sourceSets.main
